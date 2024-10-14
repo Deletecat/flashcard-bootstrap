@@ -47,6 +47,7 @@ all		:	$(TARGET).nds \
 			ACEP/_ds_menu.dat \
 			akmenu4.nds \
 			ttmenu.dat \
+			R4iTT_DSTT/ttmenu.dat \
 			r4.dat \
 			_dsmenu.dat \
 			dsedgei.dat \
@@ -64,7 +65,7 @@ dist	:	all
 	@mkdir -p bootstrap/N5
 	@mkdir -p bootstrap/G003/system
 	@cp -r README.md _ds_menu.dat ez5sys.bin ttmenu.dat r4.dat _boot_mp.nds bootme.nds ismat.dat _ds_menu.nds ez5isys.bin akmenu4.nds _dsmenu.dat dsedgei.dat scfw.sc bootstrap
-	@cp -r MAZE ACEP R4iLS Gateway r4ids.cn bootstrap 
+	@cp -r MAZE ACEP R4iLS Gateway r4ids.cn R4iTT_DSTT bootstrap
 	@cp -r resource/M3R_iTDS_R4RTS/* bootstrap/M3R_iTDS_R4RTS/
 	@cp -r resource/DSOneSDHC_DSOnei/* bootstrap/DSOneSDHC_DSOnei/
 	@cp resource/N5/_ax_menu.dat bootstrap/N5/_ax_menu.dat
@@ -73,7 +74,7 @@ dist	:	all
 	@cp -r DSOneSDHC_DSOnei/* bootstrap/DSOneSDHC_DSOnei/
 	@cp r4i.sys bootstrap/M3R_iTDS_R4RTS/_system_/_sys_data/r4i.sys
 	@cp N5/_ds_menu.dat bootstrap/N5/_ds_menu.dat
-	
+
 	@cd bootstrap && zip -r bootstrap.zip *
 	@mv bootstrap/bootstrap.zip $(TOPDIR)
 
@@ -97,7 +98,7 @@ _boot_mp.nds:	$(TARGET).nds
 	@cp $< $@
 	@dlditool DLDI/mpcf.dldi $@
 
-r4i.sys	:	$(TARGET).nds
+r4i.sys:	$(TARGET).nds
 	@echo "Make M3R_iTDS_R4RTS"
 	@cp $< $@
 	@dlditool "DLDI/m3ds.dldi" $@
@@ -140,6 +141,12 @@ ttmenu.dat:		$(TARGET)_02000450.nds
 	@echo "Make DSTT"
 	@cp $< $@
 	@dlditool DLDI/ttio_sdhc.dldi $@
+
+R4iTT_DSTT/ttmenu.dat:	$(TARGET)_02000450.nds
+	@echo "Make R4iTT DSTT"
+	@[ -d R4iTT_DSTT ] || mkdir -p R4iTT_DSTT
+	@cp $< $@
+	@dlditool DLDI/DSTTDLDIboyakkeyver.dldi $@
 
 DSOneSDHC_DSOnei/ttmenu.dat:	$(TARGET)_02000450.nds
 	@echo "Make DSONE SDHC"
@@ -263,5 +270,5 @@ clean:
 	@rm -rf arm*/data
 	@rm -rf $(TARGET)*.nds $(TARGET)*.elf
 	@rm -rf _ds_menu.dat _dsmenu.dat ez5sys.bin akmenu4.nds ttmenu.dat bootme.nds _boot_mp.nds ismat.dat _ds_menu.nds ez5isys.bin r4i.sys scfw.sc dsedgei.dat
-	@rm -rf ACEP R4iLS MAZE N5 Gateway DSOneSDHC_DSOnei r4ids.cn r4.dat G003
+	@rm -rf ACEP R4iLS MAZE N5 Gateway DSOneSDHC_DSOnei r4ids.cn R4iTT_DSTT r4.dat G003
 	@rm -rf data bootstrap bootstrap.zip
