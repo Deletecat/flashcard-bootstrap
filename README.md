@@ -16,7 +16,6 @@ Currently available flashcarts:
 - N5 (in N5 folder)
 - EDGEi (not to be confused with the original EDGE or iEDGE!) (dsedgei.dat)
 - r4ids.cn carts, R4 Ultra, R4iTT NEW, R4iTT 3DS, r4i-gold.me, r4i3d.com carts with a year number, r4igold.cc 3DS, r4i-drive.com, r4isdhc.com carts that are ***NOT*** between 2014-2021, r4isdhc.hk carts that are ***NOT*** 2021 (in r4ids.cn folder)
-- R4iTT **with a screw on the back of the cart**, r4i-gold.com 3DS Gold **RTS**, PK3DS (in r4itt_dstt folder)
 - Amaze3DS, Wood r4igold.cc Upgrade (in MAZE folder)
 - Ace3DS+ (in ACEP folder)
 - R4iLS, r4isdhc.com.cn, r4isdhc.hk (in R4iLS folder)
@@ -29,6 +28,8 @@ Currently available flashcarts:
 - iSmart Premium (ismat.dat)
 - EZ-Flash Vi (ez5isys.bin)
 - r4i.cn carts (_ds_menu.nds)
+- R4iTT **with a screw**, r4i-gold.com R4 Gold 3DS **RTS**, PK3DS (in r4itt_dstt folder)
+- R4DS Pro (in r4dspro folder)
 
 Copy the appropriate files to root, and then add any homebrew of your choice to root and rename it BOOT.NDS.
 

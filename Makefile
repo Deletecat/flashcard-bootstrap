@@ -46,6 +46,7 @@ all		:	$(TARGET).nds \
 			ez5isys.bin \
 			ACEP/_ds_menu.dat \
 			akmenu4.nds \
+			r4dspro/_ds_menu.dat \
 			ttmenu.dat \
 			R4iTT_DSTT/ttmenu.dat \
 			r4.dat \
@@ -136,6 +137,12 @@ akmenu4.nds:	$(TARGET)_02000450.nds
 	@echo "Make AK2"
 	@cp $< $@
 	@dlditool DLDI/ak2_sd.dldi $@
+
+r4dspro/_ds_menu.dat:	$(TARGET)_02000450.nds
+	@echo "Make R4DS Pro (AK2 with broken CMD25)"
+	@[ -d r4dspro ] || mkdir -p r4dspro
+	@cp $< $@
+	@dlditool DLDI/ak2_sd_singlewrite.dldi $@
 
 ttmenu.dat:		$(TARGET)_02000450.nds
 	@echo "Make DSTT"
@@ -270,5 +277,5 @@ clean:
 	@rm -rf arm*/data
 	@rm -rf $(TARGET)*.nds $(TARGET)*.elf
 	@rm -rf _ds_menu.dat _dsmenu.dat ez5sys.bin akmenu4.nds ttmenu.dat bootme.nds _boot_mp.nds ismat.dat _ds_menu.nds ez5isys.bin r4i.sys scfw.sc dsedgei.dat
-	@rm -rf ACEP R4iLS MAZE N5 Gateway DSOneSDHC_DSOnei r4ids.cn R4iTT_DSTT r4.dat G003
+	@rm -rf ACEP R4iLS MAZE N5 Gateway DSOneSDHC_DSOnei r4ids.cn R4iTT_DSTT r4.dat G003 r4dspro
 	@rm -rf data bootstrap bootstrap.zip
