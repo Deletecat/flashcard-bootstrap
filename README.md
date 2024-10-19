@@ -1,6 +1,8 @@
 # Flashcard Bootstrap
 
-https://github.com/lifehackerhansol/flashcard-bootstrap
+This is a fork of https://github.com/lifehackerhansol/flashcard-bootstrap - specifically from version 1.4.0.
+I have made this fork to act as a testing ground for my own carts - seeing what works and doesn't work on them.
+As such, I don't intend to make any releases based on my changes.
 
 This repository aims to have an easy replacement for your flashcart kernel to automatically boot any homebrew of your choice. 
 
